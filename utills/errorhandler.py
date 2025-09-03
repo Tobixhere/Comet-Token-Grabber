@@ -1,0 +1,14 @@
+
+
+from src import *
+from src.util.logger import logger
+logger = logger('Error Handler')
+
+def handle_exception(exc_type, exc_value, exc_traceback):
+    tb = ''.join(traceback.format_exception(exc_type, exc_value, exc_traceback))
+    logger.error(tb)
+    logger.log('Press enter to quit, if this keeps happening join the discord and report the error (REDOWNLOADING MIGHT FIX THIS ISSUE)', True)
+    input('')
+    sys.exit()
+
+sys.excepthook = handle_exception
